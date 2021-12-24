@@ -14,7 +14,7 @@ public class DemoPlayer : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerAnimator = GetComponent<Animator>();
+        // playerAnimator = GetComponent<Animator>();
     }
 
     private void Update()
