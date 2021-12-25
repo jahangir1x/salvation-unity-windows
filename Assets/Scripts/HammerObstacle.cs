@@ -11,11 +11,11 @@ public class HammerObstacle : MonoBehaviour
     [SerializeField] private float speed = 10f;
     [SerializeField] private float waitAfterSmash = 2f;
     [SerializeField] private float waitAfterPull = 3f;
+    [SerializeField] private bool isMovingToSmashPosition = true;
 
     private CameraShake cameraShake;
     private Vector3 pullPosition;
     private Vector3 smashPosition;
-    private bool isMovingToSmashPosition = true;
 
     private void Start()
     {
