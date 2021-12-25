@@ -60,7 +60,7 @@ public class CollisionManager : MonoBehaviour
 
     private void TriggerEnterDoorSwitch()
     {
-        doorSwitchAnimator.Play(GameManager.DoorSwitchOnAnimID);
+        doorSwitchAnimator.SetBool(GameManager.IsDoorSwitchOnAnimID, true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -85,7 +85,7 @@ public class CollisionManager : MonoBehaviour
 
     private void TriggerExitDoorSwitch()
     {
-        doorSwitchAnimator.Play(GameManager.DoorSwitchOffAnimID);
+        doorSwitchAnimator.SetBool(GameManager.IsDoorSwitchOnAnimID, false);
     }
 
     // private void TriggerEnterHammer()
