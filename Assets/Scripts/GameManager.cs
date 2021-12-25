@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public static int PlatformVanishAnimID;
     public static int PlayerDetectedAnimBoolID;
     public static int NullAnimID;
-    public static int IsDoorSwitchOnAnimID;
+    public static int IsDoorSwitchOnAnimBool;
+    public static int IsDoorOpenAnimBool;
 
     private void Awake()
     {
@@ -37,7 +38,8 @@ public class GameManager : MonoBehaviour
         NullAnimID = Animator.StringToHash(Constants.NULL);
         PlatformVanishAnimID = Animator.StringToHash(Constants.PLATFORM_VANISH_ANIM);
         PlayerDetectedAnimBoolID = Animator.StringToHash(Constants.PLAYER_DETECTED_BOOL_ANIM);
-        IsDoorSwitchOnAnimID = Animator.StringToHash(Constants.IS_DOOR_SWITCH_ON);
+        IsDoorSwitchOnAnimBool = Animator.StringToHash(Constants.IS_DOOR_SWITCH_ON);
+        IsDoorOpenAnimBool = Animator.StringToHash(Constants.IS_DOOR_OPEN);
 
     }
 

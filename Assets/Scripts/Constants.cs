@@ -18,6 +18,7 @@ public static class Constants
 
     // animation bool
     public const string IS_DOOR_SWITCH_ON = "isOn";
+    public const string IS_DOOR_OPEN = "isOpen";
 
 
     // animation triggers

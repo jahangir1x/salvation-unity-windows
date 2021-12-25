@@ -15,6 +15,7 @@ public class CollisionManager : MonoBehaviour
     private MovingPlatform movingPlatform;
     private HammerObstacle hammer;
     private Animator doorSwitchAnimator;
+    private DoorSwitch doorSwitch;
 
 
     private void Start()
@@ -30,6 +31,7 @@ public class CollisionManager : MonoBehaviour
                 break;
             case ObjectType.DoorSwitch:
                 doorSwitchAnimator = transform.GetComponent<Animator>();
+                doorSwitch = GetComponent<DoorSwitch>();
                 break;
             default:
                 break;
@@ -42,7 +44,6 @@ public class CollisionManager : MonoBehaviour
     {
         if (currentObjectType == ObjectType.DoorSwitch)
         {
-            Debug.Log("triggered: " + collision);
             TriggerEnterDoorSwitch();
         }
         if (collision.gameObject.layer == GameManager.PlayerLayer)
@@ -60,7 +61,9 @@ public class CollisionManager : MonoBehaviour
 
     private void TriggerEnterDoorSwitch()
     {
-        doorSwitchAnimator.SetBool(GameManager.IsDoorSwitchOnAnimID, true);
+        doorSwitchAnimator.SetBool(GameManager.IsDoorSwitchOnAnimBool, true);
+        doorSwitch.OpenTheGate();
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -85,7 +88,8 @@ public class CollisionManager : MonoBehaviour
 
     private void TriggerExitDoorSwitch()
     {
-        doorSwitchAnimator.SetBool(GameManager.IsDoorSwitchOnAnimID, false);
+        doorSwitchAnimator.SetBool(GameManager.IsDoorSwitchOnAnimBool, false);
+        doorSwitch.CloseTheGate();
     }
 
     // private void TriggerEnterHammer()
