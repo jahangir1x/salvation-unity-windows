@@ -9,13 +9,20 @@ public class CollisionManager : MonoBehaviour
     {
         MovingPlatform,
         Hammer,
-        DoorSwitch
+        DoorSwitch,
+        WheelSwitch,
+        SpikeArea,
+        CameraBullet
     }
     public ObjectType currentObjectType;    // store type of this object.
     private MovingPlatform movingPlatform;
     private HammerObstacle hammer;
     private Animator doorSwitchAnimator;
+    private Animator wheelSwitchAnimator;
     private DoorSwitch doorSwitch;
+    private WheelSwitch wheelSwitch;
+    private CameraBullet cameraBullet;
+
 
 
     private void Start()
@@ -33,6 +40,13 @@ public class CollisionManager : MonoBehaviour
                 doorSwitchAnimator = transform.GetComponent<Animator>();
                 doorSwitch = GetComponent<DoorSwitch>();
                 break;
+            case ObjectType.WheelSwitch:
+                wheelSwitchAnimator = transform.GetComponent<Animator>();
+                wheelSwitch = GetComponent<WheelSwitch>();
+                break;
+            case ObjectType.CameraBullet:
+                cameraBullet = GetComponent<CameraBullet>();
+                break;
             default:
                 break;
         }
@@ -46,17 +60,44 @@ public class CollisionManager : MonoBehaviour
         {
             TriggerEnterDoorSwitch();
         }
-        if (collision.gameObject.layer == GameManager.PlayerLayer)
+        else if (currentObjectType == ObjectType.WheelSwitch)
+        {
+            TriggerEnterWheelSwitch();
+        }
+
+        else if (collision.gameObject.layer == GameManager.PlayerLayer)
         {
             switch (currentObjectType)
             {
                 case ObjectType.MovingPlatform:
                     TriggerEnterMovingPlatform();
                     break;
+                case ObjectType.SpikeArea:
+                    TriggerEnterSpikeArea();
+                    break;
+                case ObjectType.CameraBullet:
+                    TriggerEnterCameraBullet();
+                    break;
                 default:
                     break;
             }
         }
+    }
+
+    private void TriggerEnterCameraBullet()
+    {
+        Debug.Log("<insert player damage due to camera bullet code here >");
+    }
+
+    private void TriggerEnterSpikeArea()
+    {
+        Debug.Log("<insert player damage code here>");
+    }
+
+    private void TriggerEnterWheelSwitch()
+    {
+        wheelSwitchAnimator.SetBool(GameManager.IsDoorSwitchOnAnimBool, true);
+        wheelSwitch.StartRotation();
     }
 
     private void TriggerEnterDoorSwitch()

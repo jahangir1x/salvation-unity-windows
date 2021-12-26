@@ -237,7 +237,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.29, y: 1.33}
+  m_Size: {x: 0.83, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -319,7 +319,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.29, y: 1.33}
+  m_Size: {x: 0.26, y: 0.47}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -407,7 +407,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.29, y: 1.33}
+  m_Size: {x: 0.77, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -453,8 +453,8 @@ MonoBehaviour:
   cameraAngularSpeed: 0.7
   cameraIntruderChaseSpeed: 3
   bulletSpeed: 7
-  shootOffset: 10
-  gunRotationSpeed: 0
+  shootOffset: 30
+  gunRotationSpeed: 20
 --- !u!1 &149704052706099347
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +561,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.29, y: 1.33}
+  m_Size: {x: 0.26, y: 0.47}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

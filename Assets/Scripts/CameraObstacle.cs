@@ -14,7 +14,7 @@ public class CameraObstacle : MonoBehaviour
     [SerializeField] private float cameraIntruderChaseSpeed = 3f;
     [SerializeField] private float bulletSpeed = 3f;
     [SerializeField] private float shootOffset = 10f;
-    [SerializeField] private float gunRotationSpeed;
+    [SerializeField] private float gunRotationSpeed = 10f;
 
     private Animator cameraAnimator;
     private float shootInterval;
@@ -104,6 +104,7 @@ public class CameraObstacle : MonoBehaviour
         {
             var dir = GameManager.PlayerTransform.position - gun.transform.position;
             shootingAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 180f + UnityEngine.Random.Range(-shootOffset, shootOffset);
+            Debug.Log("shooting angle: " + shootingAngle);
             shootingAngleSet = true;
         }
         else
