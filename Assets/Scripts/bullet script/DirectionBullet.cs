@@ -1,0 +1,76 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DirectionBullet : MonoBehaviour
+{
+    float speed = 7f, lifeTime = 4f;            // bullet speed and life time
+    GameObject player;                           // to access player;
+    Vector2 target;                             // terget to shoot - PlayerPosition
+    //Animator anim;                       // bullet destroy animaiton
+    Rigidbody2D bulletRigidBody;               // bullet rigidbody
+    bool colliding;                             //check if colliding
+    float TimeToDistroy = .3f;                  // destroy time delay - time of animation end
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        bulletRigidBody = GetComponent<Rigidbody2D>();
+        //anim = GetComponent<Animator>();
+        colliding = false;
+        //player = GameManager.PlayerTransform;
+        target = new Vector2(player.transform.position.x, player.transform.position.y);
+        StartCoroutine(CountDownTimer());       //to destroy as soon as animation ends
+    }
+
+    // while colliding
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            colliding = true;
+            StartCoroutine(VanishBullet(TimeToDistroy));
+        }
+
+    }
+    private void OnEnable()
+    {
+        colliding = false;
+        target = new Vector2(player.transform.position.x, player.transform.position.y);
+        StartCoroutine(CountDownTimer());       //to destroy as soon as animation ends
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        //Vector2 bulletEndPosition = transform.position;
+        //bulletEndPosition.x = transform.position.x + 10 * transform.localScale.x;
+        // if not collide to move towards playerposition
+        if (colliding == false)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        }
+        // start animation and destroy as soon as animation ends
+        if (target.x == transform.position.x && target.y == transform.position.y)
+        {
+            //anim.SetBool("Die", true);
+            float time = 1f;
+            StartCoroutine(VanishBullet(time));
+        }
+    }
+    //to destroy as soon as animation ends
+    IEnumerator CountDownTimer()
+    {
+        yield return new WaitForSeconds(lifeTime);
+
+        StartCoroutine(VanishBullet(TimeToDistroy));
+    }
+    //to destroy as soon as animation ends
+    IEnumerator VanishBullet(float destroyTime)
+    {
+
+        yield return new WaitForSeconds(destroyTime);
+        //anim.SetBool("Die", false);
+        gameObject.SetActive(false);
+    }
+}
