@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1704503984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1704503985}
+  m_Layer: 10
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1704503985
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704503984}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.9, y: -5.8199997, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6489269239745594321}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6489269238061308106
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,8 +133,7 @@ GameObject:
   - component: {fileID: 6489269239745594324}
   - component: {fileID: 6489269239745594327}
   - component: {fileID: 6489269239745594325}
-  - component: {fileID: 6489269239745594346}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Bringer-of-Death-SpritSheet_0
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -120,11 +149,12 @@ Transform:
   m_GameObject: {fileID: 6489269239745594333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.46, y: -1.53, z: 0}
-  m_LocalScale: {x: 2.7293, y: 2.7293, z: 2.7293}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6489269238061308107}
   - {fileID: 6489269238248796662}
   - {fileID: 6489269239685118687}
+  - {fileID: 1704503985}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -233,12 +263,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   isFlip: 0
-  speed: 2.5
-  time: 5
-  attackRange: 2
-  clone: {fileID: 5024797063143557855, guid: 07532bd10b93e1649ba6fa5b75c10e82, type: 3}
+  speed: 13
+  time: 1
+  attackRange: 10
+  clone: {fileID: 1835902886006016066, guid: 9aec4a4bba69a5d4b8acbba441dd01d3, type: 3}
   Offset: {x: 1, y: -0.2, z: 0}
   dir: 1
+  spawnDelay: 0.6
+  bossCutsceneManager: {fileID: 0}
+  spawnPoint: {fileID: 1704503984}
   bossStage: 0
 --- !u!61 &6489269239745594324
 BoxCollider2D:
@@ -253,18 +286,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05535844, y: -0.17902496}
+  m_Offset: {x: -1.3202653, y: -3.7517872}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.8, y: 0.5}
-    oldSize: {x: 1.4, y: 0.93}
+    oldSize: {x: 28, y: 18.6}
     newSize: {x: 1.4, y: 0.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35410213, y: 0.5151882}
+  m_Size: {x: 7.517646, y: 10.842699}
   m_EdgeRadius: 0
 --- !u!114 &6489269239745594327
 MonoBehaviour:
@@ -282,7 +315,7 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 900
   time: 0.3
-  fireBall: {fileID: 5007695281341981811, guid: 686046d999e311342a09b2b021790a96,
+  fireBall: {fileID: 5007695281341981811, guid: db282b52278c04c489e9722dbd9326b0,
     type: 3}
 --- !u!114 &6489269239745594325
 MonoBehaviour:
@@ -297,23 +330,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossHealth: 1300
-  playerBulletDamageValue: 10
+  playerBulletDamageValue: 100
   bossHealthBar: {fileID: 0}
---- !u!114 &6489269239745594346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6489269239745594333}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad50a767ea3e8a249a1d49a935aff1d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossPrefab: {fileID: 6474190272558026122, guid: f8b8d57a301217844a99f18af6f92ba5,
-    type: 3}
-  replicaAttackTime: 2
 --- !u!1001 &7679901901987653809
 PrefabInstance:
   m_ObjectHideFlags: 0

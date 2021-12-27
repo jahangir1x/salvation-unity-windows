@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 351915335510617001}
   - component: {fileID: 2743014372827183044}
   - component: {fileID: 3233930777343238439}
-  - component: {fileID: 5106179808790800659}
   - component: {fileID: 4802337012005420060}
+  - component: {fileID: 5191727304301453036}
   m_Layer: 0
   m_Name: Player bullet
   m_TagString: PlayerBullet
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5007695281341981811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.61, y: -0.07, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.1794, y: 2.1794, z: 2.1794}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,9 +72,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 04aedda69f54dc84e8055a6e83826db6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: 204cc76cbae627b4da3c235c84f1bb76, type: 3}
+  m_Color: {r: 0.06132078, g: 1, b: 0.8270722, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,32 +105,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!61 &5106179808790800659
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5007695281341981811}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.36, y: 0.16}
-    newSize: {x: 0.36, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.36, y: 0.16}
-  m_EdgeRadius: 0
 --- !u!114 &4802337012005420060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +117,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158c292cf46b05842b8f81b22bf9d860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &5191727304301453036
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5007695281341981811}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.2

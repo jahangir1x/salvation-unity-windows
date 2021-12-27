@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 5024797063143557854}
   m_Layer: 0
   m_Name: Bringer-of-Death-SpritSheet_0 (1)
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,6 +234,8 @@ MonoBehaviour:
   attackRange: 2
   clone: {fileID: 0}
   Offset: {x: 0, y: 0, z: 0}
+  dir: 1
+  bossStage: 0
 --- !u!61 &5024797063143557854
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -251,7 +253,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.8, y: 0.5}
-    oldSize: {x: 1.4, y: 0.93}
+    oldSize: {x: 28, y: 18.6}
     newSize: {x: 1.4, y: 0.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

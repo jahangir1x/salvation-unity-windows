@@ -22,7 +22,7 @@ public class BossReplica : MonoBehaviour
             if (replicaAttackTime <= 0.0f)
             {
 
-                ReplicasMovement rp = transform.GetChild(Random.Range(3, transform.childCount)).GetComponent<ReplicasMovement>();
+                ReplicasMovement rp = transform.GetChild(Random.Range(4, transform.childCount)).GetComponent<ReplicasMovement>();
 
                 if (rp.a1 != ReplicasMovement.Action.attack)
                 {

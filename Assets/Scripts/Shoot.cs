@@ -34,8 +34,10 @@ public class Shoot : MonoBehaviour
     {
         isShooting = true;
 
-        GameObject newfireball= Instantiate(fireBall, Shootpos.position, Quaternion.identity);
-        Vector2 dir = player.position - transform.position;
+        GameObject newfireball= Instantiate(fireBall, Shootpos.position, Quaternion.identity,transform);
+        
+        Vector2 dir = player.position - Shootpos.position;
+        Debug.Log(dir);
         newfireball.GetComponent<Rigidbody2D>().AddForce(dir * speed * Time.deltaTime, ForceMode2D.Impulse);
 
         //newfireball.GetComponent<Rigidbody2D>().velocity = new Vector2(-boss.dir* transform.localScale.x*speed * Time.deltaTime, 0f);

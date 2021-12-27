@@ -14,13 +14,18 @@ public class Boss : MonoBehaviour
     public GameObject clone;
     public Vector3 Offset;
     BossHealth bossHealth;
-    BossReplica bossReplica;
     Shoot shoot;
 
     public int dir=1;
 
+    public float spawnDelay;
+
+    public BossCutsceneManager bossCutsceneManager;
+
 
     bool isAttacking = false;
+
+    public GameObject spawnPoint;
     public enum BossStage
     {
         None,
@@ -28,16 +33,24 @@ public class Boss : MonoBehaviour
         SecondStage,
         ThirdStage,
         FourthStage,
-        FifthStage,
         DeathStage
 
     }
      public BossStage bossStage;
 
+    public GameObject lastStone;
+
     bool isInsideCoroutine = false;
+
+    public int isover = 0;
+    public int stoneGenerated = 0;
+
+    public float stoneForce;
+
+    public bool stoneCollected = false;
     public void Start()
     {
-
+        
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         anim = GetComponent<Animator>();
@@ -45,6 +58,8 @@ public class Boss : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         bossHealth = GetComponent<BossHealth>();
+
+        shoot = gameObject.GetComponent<Shoot>();
 
         bossStage = BossStage.FirstStage;
     }
@@ -71,11 +86,36 @@ public class Boss : MonoBehaviour
         }
     }
 
+    GameObject stone;
     private void Update()
     {
         if (bossStage == BossStage.None)
         {
-            anim.Play("idle");
+            if(isover == 1)
+            {
+                shoot.enabled = false;
+
+                gameObject.GetComponent<Collider2D>().enabled = false;
+
+                // spawn last stone. 
+                if (stoneGenerated == 0)
+                {
+                     stone = Instantiate(lastStone, spawnPoint.transform.position, Quaternion.identity);
+                     stoneGenerated = 11;
+
+                }
+
+                if (stoneCollected)
+                    bossStage = BossStage.DeathStage;
+
+
+            }
+            else
+            {
+                shoot.enabled = false;
+                anim.Play("idle");
+            }
+
         }
         if (bossStage == BossStage.FirstStage)
         {
@@ -118,20 +158,13 @@ public class Boss : MonoBehaviour
             }
 
         }
-        if(bossStage == Boss.BossStage.ThirdStage)
-        {
-            bossReplica = gameObject.GetComponent<BossReplica>();
-            bossReplica.enabled = true;
-        }
-        if(bossStage==Boss.BossStage.FourthStage)
+        if(bossStage==Boss.BossStage.ThirdStage)
         {
             LookAtPlayer();
-            bossReplica.enabled = false;
-            shoot = gameObject.GetComponent<Shoot>();
             shoot.enabled = true;
            // shoot.speed = 100f;
         }
-        if (bossStage == Boss.BossStage.FifthStage)
+        if (bossStage == Boss.BossStage.FourthStage)
         {
             if (time > 0f)
             {
@@ -150,15 +183,32 @@ public class Boss : MonoBehaviour
             }
            // shoot.speed = 200f;
         }
+
+        if (bossStage == Boss.BossStage.DeathStage)
+        {
+            gameObject.GetComponent<Collider2D>().enabled = true;
+            //play cutscene...
+            if (transform.position.x > player.transform.position.x)
+            {
+                if (player.transform.localScale.x < 0)
+                    player.GetComponent<NormalPlayerMovement>().FlipCharacterDirection();
+            }
+            else
+            {
+                if (player.transform.localScale.x > 0)
+                    player.GetComponent<NormalPlayerMovement>().FlipCharacterDirection();
+            }
+            bossCutsceneManager.PlayFinalCutscene();
+        }
         time -= Time.deltaTime;
     }
      IEnumerator Clone()
     {
         isInsideCoroutine = true;
 
-       yield return new WaitForSeconds(0.6f);
+       yield return new WaitForSeconds(spawnDelay);
        
-        GameObject c1= Instantiate(clone, transform.position + Offset, Quaternion.identity);
+        GameObject c1= Instantiate(clone, spawnPoint.transform.position, Quaternion.identity,transform);
 
         //c1.tag = "Skeleton";
         time = 1f;
@@ -168,4 +218,17 @@ public class Boss : MonoBehaviour
         //  yield return new WaitForSeconds(2f);
         //GameObject c3 = Instantiate(clone, transform.position + Offset, Quaternion.identity);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.LogError(654564);
+        if(collision.CompareTag("SpecialBullet"))
+        {
+            Debug.LogError("gg");
+            anim.Play("dead");
+        }
+    }
+
+
+
 }

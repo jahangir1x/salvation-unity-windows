@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class playerBullet : MonoBehaviour
 {
+    LayerMask layer;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!collision.CompareTag("Player"))
+        if (gameObject.CompareTag("PlayerBullet"))
         {
-            Destroy(gameObject);
+            if (collision.CompareTag("Boss") || collision.CompareTag("Enemy") || collision.CompareTag("Platform") || collision.CompareTag("EnemyBullet"))
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (gameObject.CompareTag("EnemyBullet"))
+        {
+            if (collision.CompareTag("Player"))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

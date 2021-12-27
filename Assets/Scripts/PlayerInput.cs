@@ -30,8 +30,10 @@ public class PlayerInput : MonoBehaviour
 
 	NormalPlayerMovement playerMovement;
 
-	//public float fireDelay = 0.5f;
+	public float fireDelay = 0.5f;
 	public bool fire = false;
+
+	public bool canMove = true;
 
 	private void Start()
 	{
@@ -63,19 +65,12 @@ public class PlayerInput : MonoBehaviour
 
 
 		//Process keyboard, mouse, gamepad (etc) inputs
-		ProcessInputs();
+		if(canMove)
+			ProcessInputs();
 
 		//Clamp the horizontal input to be between -1 and 1
 		horizontal = Mathf.Clamp(horizontal, -1f, 1f);
 
-		if (Input.GetKey(KeyCode.RightControl))
-		{
-			if (!fire)
-			{
-				StartCoroutine(Fire());
-			}
-		
-		}
 	}
 
 	void FixedUpdate()
@@ -85,13 +80,13 @@ public class PlayerInput : MonoBehaviour
 		readyToClear = true;
 	}
 
-	IEnumerator Fire()
+	public IEnumerator Fire()
 	{
 		fire = true;
 		GameObject bullet = Instantiate(Bullet, FirePos.position, Quaternion.identity);
 		Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 		rb.AddForce(Vector2.right * playerMovement.direction * shootSpeed, ForceMode2D.Impulse);
-		yield return new WaitForSeconds(0.3f);
+		yield return new WaitForSeconds(fireDelay);
 		fire = false;
 	}
 
@@ -111,8 +106,17 @@ public class PlayerInput : MonoBehaviour
 
 	void ProcessInputs()
 	{
+		if (Input.GetKey(KeyCode.RightControl))
+		{
+			if (!fire)
+			{
+				StartCoroutine(Fire());
+			}
+
+		}
+
 		//Accumulate horizontal axis input
-		 horizontal+= Input.GetAxis("Horizontal");
+		horizontal += Input.GetAxis("Horizontal");
 
 		//Accumulate button inputs
 		jumpPressed		= jumpPressed || Input.GetButtonDown("Jump");

@@ -39,9 +39,6 @@ public class NormalPlayerMovement : MonoBehaviour
 	float originalXScale;					//Original scale on X axis
 	public int direction = 1;						//Direction player is facing
 
-	Vector2 colliderStandSize;				//Size of the standing collider
-	Vector2 colliderStandOffset;            //Offset of the standing collider
-
 
 	const float smallAmount = .05f;			//A small amount used for hanging position
 
@@ -53,7 +50,7 @@ public class NormalPlayerMovement : MonoBehaviour
 		input = GetComponent<PlayerInput>();
 		rigidBody = GetComponent<Rigidbody2D>();
 		bodyCollider = GetComponent<BoxCollider2D>();
-	//	playerAnimator = GetComponent<Animator>();
+		playerAnimator = GetComponent<Animator>();
 
 		//Record the original x scale of the player
 		originalXScale = transform.localScale.x;
@@ -61,9 +58,8 @@ public class NormalPlayerMovement : MonoBehaviour
 		//Record the player's height from the collider
 		playerHeight = bodyCollider.size.y;
 
-		//Record initial collider size and offset
-		colliderStandSize = bodyCollider.size;
-		colliderStandOffset = bodyCollider.offset;
+		direction = 1;
+
 	}
 
 	void FixedUpdate()
@@ -90,10 +86,6 @@ public class NormalPlayerMovement : MonoBehaviour
 		if (leftCheck || rightCheck)
 			isOnGround = true;
 
-
-
-		//Determine the direction of the wall grab attempt
-		Vector2 grabDir = new Vector2(direction, 0f);
 	}
 
 	void GroundMovement()
@@ -102,20 +94,16 @@ public class NormalPlayerMovement : MonoBehaviour
 		if(input.horizontal !=0)
 		{
 			if(isOnGround)
-				Debug.Log(1);
-			//playerAnimator.Play("walk");
+				playerAnimator.Play("walk");
 			else
-				Debug.Log(1);
-			//playerAnimator.Play("none");
+				playerAnimator.Play("none");
 		}
 		else
 		{
 			if (isOnGround)
-				Debug.Log(1);
-			//playerAnimator.Play("idle");
+				playerAnimator.Play("idle");
 			else
-				Debug.Log(1);
-			//playerAnimator.Play("none");
+				playerAnimator.Play("none");
 		}
 
 		//Calculate the desired velocity based on inputs
@@ -195,7 +183,7 @@ public class NormalPlayerMovement : MonoBehaviour
 
 	}
 
-	void FlipCharacterDirection()
+	public void FlipCharacterDirection()
 	{
 		//Turn the character by flipping the direction
 		direction *= -1;

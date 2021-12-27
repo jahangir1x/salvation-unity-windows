@@ -8,7 +8,7 @@ public class BossHealth : MonoBehaviour
     [SerializeField]
     public  float bossHealth;
 
-    public float playerBulletDamageValue = 10;
+    public float playerBulletDamageValue;
 
 
     Boss boss;
@@ -40,13 +40,8 @@ public class BossHealth : MonoBehaviour
     {
         if (collision.CompareTag("PlayerBullet"))
         {
-            if(boss.bossStage == Boss.BossStage.ThirdStage)
-            {
-                if (transform.childCount <= 3)
-                    Damage(10f);
-            }
-            else
-               Damage(10f);
+            Damage(playerBulletDamageValue);
+
         }
     }
 
@@ -71,7 +66,7 @@ public class BossHealth : MonoBehaviour
            // bloodStain.transform.localRotation = Quaternion.Euler(bloodStain.transform.localRotation.x, bloodStain.transform.localRotation.y,
            //     Random.Range(0, 360));
 
-            Destroy(gameObject);
+           // Destroy(gameObject);
         }
         else
             CinemachineShake.Instance.ShakeCamera(shakeIntensity / 2.5f, shakeTime / 2.5f);
@@ -92,17 +87,16 @@ public class BossHealth : MonoBehaviour
         {
             boss.bossStage = Boss.BossStage.ThirdStage;
         }
-        if(bossHealth > 200f && bossHealth <= 500f)
+        if(bossHealth > 0f && bossHealth <= 500f)
         {
             boss.bossStage = Boss.BossStage.FourthStage;
         }
-        if(bossHealth > 0 && bossHealth <= 200f)
-        {
-            boss.bossStage = Boss.BossStage.FifthStage;
-        }
+
         if(bossHealth <= 0f)
         {
-            boss.bossStage = Boss.BossStage.DeathStage;
+            boss.isover = 1;
+
+            boss.bossStage = Boss.BossStage.None;
         }
 
     }
