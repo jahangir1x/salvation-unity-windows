@@ -38,8 +38,8 @@ public class TransitionManager : MonoBehaviour
 
 	public void PlayAnimSwitch(string name)
 	{
-		audio_Manager.instance.Play("loadTransition");
-		audio_Manager.instance.Play("switchTransition");
+		//audio_Manager.instance.Play("loadTransition");
+		//audio_Manager.instance.Play("switchTransition");
 		switchSceneTransitionAnimator.Play(name);
 	}
 

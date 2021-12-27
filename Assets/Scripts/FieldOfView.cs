@@ -11,8 +11,8 @@ public class FieldOfView : MonoBehaviour
 
     private Mesh mesh;
     public Vector3 origin;
-    private float fieldOfView;
-    private float viewDistance;
+    [SerializeField] private float fieldOfView = 40f;
+    [SerializeField] private float viewDistance = 70f;
 
 
     private Vector3 VectorFromAngle(float angle)
@@ -33,14 +33,12 @@ public class FieldOfView : MonoBehaviour
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        fieldOfView = 40f;
-        viewDistance = 20f;
         //startingAngle = 45f;
     }
     private void LateUpdate()
     {
 
-        int rayCount = 80;
+        int rayCount = 200;
         float angle = startingAngle;
         float angleIncrease = fieldOfView / rayCount;
         //origin = transform.position;

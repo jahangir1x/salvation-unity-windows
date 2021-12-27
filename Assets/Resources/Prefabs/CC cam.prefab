@@ -96,7 +96,7 @@ MonoBehaviour:
   foundPlayer: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 769
   origin: {x: 0, y: 0, z: 0}
 --- !u!1 &149704051302477297
 GameObject:

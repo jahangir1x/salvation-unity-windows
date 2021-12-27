@@ -173,9 +173,16 @@ MonoBehaviour:
   clone: {fileID: 0}
   Offset: {x: 0, y: 0, z: 0}
   dir: 1
+  spawnDelay: 0
   bossCutsceneManager: {fileID: 0}
   spawnPoint: {fileID: 0}
   bossStage: 1
+  lastStone: {fileID: 0}
+  isover: 0
+  stoneGenerated: 0
+  stoneForce: 0
+  stoneCollected: 0
+  killBoss: 0
 --- !u!114 &5503208572069823850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,4 +196,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonHealth: 100
-  skeletonDamage: 100
+  damageValue: 15

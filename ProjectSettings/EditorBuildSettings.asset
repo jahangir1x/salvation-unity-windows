@@ -6,6 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Menu Practice.unity
+    guid: 7601d2a0ec916e5498978dfd2c929b1a
+  - enabled: 1
+    path: Assets/Scenes/Initial Scene.unity
+    guid: b01102259de59084a883428be05875c9
+  - enabled: 1
+    path: Assets/Scenes/Door 1 _Rocky.unity
+    guid: 1276a57d4b910b94b88c48850baa3502
+  - enabled: 1
+    path: Assets/Scenes/Door 2 _Rocky.unity
+    guid: fe64f7fcb92c7794eb1f2339ea915ef7
+  - enabled: 1
+    path: Assets/Scenes/Door 3 _Rocky.unity
+    guid: b3feeb1dcd2de254b8617ff18a95a074
+  - enabled: 1
+    path: Assets/Scenes/Door 4 _Rocky.unity
+    guid: 73295bdaaa9ce0244ae309b5464908ca
+  - enabled: 1
+    path: Assets/Scenes/Door Boss _Rocky.unity
+    guid: cd0bdba1437f6f646bf3082919fcda34
   m_configObjects: {}

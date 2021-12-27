@@ -243,6 +243,11 @@ MonoBehaviour:
   bossCutsceneManager: {fileID: 0}
   spawnPoint: {fileID: 5389787948936348139}
   bossStage: 0
+  lastStone: {fileID: 0}
+  isover: 0
+  stoneGenerated: 0
+  stoneForce: 0
+  stoneCollected: 0
 --- !u!61 &1207769992619567247
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -283,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shootpos: {fileID: 1207769992530008749}
   player: {fileID: 0}
-  speed: 20
+  speed: 30
   time: 0.3
   fireBall: {fileID: 5007695281341981811, guid: db282b52278c04c489e9722dbd9326b0,
     type: 3}

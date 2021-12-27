@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084255873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.56, y: 0, z: 0}
+  m_LocalPosition: {x: -0.61, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4957780786325481790}
@@ -61,8 +61,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4957780786325481787}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.84, y: 2.37, z: 0.001}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalPosition: {x: -16.84, y: 2.37, z: 0}
+  m_LocalScale: {x: -2, y: 2, z: 1}
   m_Children:
   - {fileID: 4957780787548657875}
   - {fileID: 4957780786516320121}
@@ -158,7 +158,7 @@ MonoBehaviour:
   bulletPossition: {fileID: 4957780786516320121}
   environmentMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   isActivated: 0
   animatorEnemyGround: {fileID: 4957780786325481784}
   bullet: {fileID: 852720767671111944, guid: 90534420ef8dd5e40b292ba346668f08, type: 3}
@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b545be55c03464a8be62e2ed17e1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blood: {fileID: 1965343156803978, guid: aa8d6482d70a23445b4b2a928ed1b845, type: 3}
   anm: {fileID: 4957780786325481784}
   enemyHealth: 20
   damageEffect: 0
@@ -276,7 +277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4957780786516320120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.23, y: -0.09, z: 0}
+  m_LocalPosition: {x: -0.28, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4957780786325481790}
@@ -306,7 +307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4957780787548657874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.07, y: -1.47, z: 0}
+  m_LocalPosition: {x: -1.07, y: -1.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4957780786325481790}

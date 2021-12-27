@@ -60,6 +60,14 @@ public class NormalPlayerMovement : MonoBehaviour
 
 		direction = 1;
 
+
+		if(PlayerPrefs.GetFloat("X",0) != 0)
+		{
+			float xpos = PlayerPrefs.GetFloat("X", 0);
+			float ypos = PlayerPrefs.GetFloat("Y", 0);
+			transform.position = new Vector2(xpos, ypos);
+		}
+
 	}
 
 	void FixedUpdate()

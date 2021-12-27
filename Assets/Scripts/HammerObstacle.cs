@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HammerObstacle : MonoBehaviour
 {
-    public bool canDealDamage = false;
+    public bool canDealDamage = true;
     [SerializeField] private Transform hammerSmasherTransform;
     [SerializeField] private Vector3 positionToMove;
     [SerializeField] private float totalDurationToSmash = 1f;
@@ -84,7 +84,7 @@ public class HammerObstacle : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        canDealDamage = true;
+        // canDealDamage = true;
         isMovingToSmashPosition = true;
         hammerSmasherTransform.position = pullPosition;
         yield return new WaitForSeconds(waitAfterPull);
@@ -116,7 +116,7 @@ public class HammerObstacle : MonoBehaviour
             yield return null;
         }
         // cameraShake.Shake();
-        canDealDamage = false;
+        // canDealDamage = false;
         isMovingToSmashPosition = false;
         hammerSmasherTransform.position = smashPosition;
         yield return new WaitForSeconds(waitAfterPull);

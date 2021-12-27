@@ -81,7 +81,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2667346088661582082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.07, y: -1.74, z: 0}
+  m_LocalPosition: {x: -1.07, y: -1.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2667346089614799086}
@@ -118,8 +118,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2667346089614799083}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.95, y: -1.28, z: 0.001}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalPosition: {x: -8.95, y: -1.28, z: 0}
+  m_LocalScale: {x: -2, y: 2, z: 1}
   m_Children:
   - {fileID: 2667346088661582083}
   - {fileID: 2667346089692382889}
@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b545be55c03464a8be62e2ed17e1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blood: {fileID: 1965343156803978, guid: aa8d6482d70a23445b4b2a928ed1b845, type: 3}
   anm: {fileID: 2667346089614799080}
   enemyHealth: 20
   damageEffect: 0
@@ -305,10 +306,10 @@ MonoBehaviour:
   playerChecker: {fileID: 3004995595239498671}
   environmentMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   playerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   isActivated: 0
   sword: {fileID: 1056966974}
   enemyHealthAccess: {fileID: 2667346089614798995}
@@ -337,7 +338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2667346089692382888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.57, y: -0.6, z: 0}
+  m_LocalPosition: {x: -0.738, y: 0.008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2667346089614799086}

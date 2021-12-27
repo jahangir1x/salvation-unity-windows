@@ -105,7 +105,7 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator HandleDeath()
     {
-        GameManager.instance.isGameOver = true;
+        //GameManager.instance.isGameOver = true;
 
         //GameObject playerVFX = Instantiate(deathVFX, transform.position, Quaternion.identity);
 
@@ -117,6 +117,8 @@ public class PlayerHealth : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.7f);
+
+        GameManagerRocky.instance.RestartScene();
 
 
     }
@@ -167,35 +169,35 @@ public class PlayerHealth : MonoBehaviour
         {
             if (touchedEnemy1)
             {
-                StartCoroutine(TakeDamg(10f));
+                StartCoroutine(TakeDamg(5f));
             }
             if (touchedEnemy2)
             {
-                StartCoroutine(TakeDamg(5f));
+                StartCoroutine(TakeDamg(4f));
             }
             if (touchedEnemy3)
             {
-                StartCoroutine(TakeDamg(10f));
+                StartCoroutine(TakeDamg(3f));
             }
             if (touchedEnemy4)
             {
-                StartCoroutine(TakeDamg(5f));
+                StartCoroutine(TakeDamg(2f));
             }
             if (touchedEnemy5)
             {
-                StartCoroutine(TakeDamg(10f));
+                StartCoroutine(TakeDamg(2f));
             }
             if (touchedEnemy6)
             {
-                StartCoroutine(TakeDamg(5f));
+                StartCoroutine(TakeDamg(3f));
             }
             if (touchedEnemy7)
             {
-                StartCoroutine(TakeDamg(10f));
+                StartCoroutine(TakeDamg(2));
             }
             if (touchedBoss)
             {
-                StartCoroutine(TakeDamg(80f));
+                StartCoroutine(TakeDamg(8f));
             }
             
         }

@@ -48,6 +48,8 @@ public class Boss : MonoBehaviour
     public float stoneForce;
 
     public bool stoneCollected = false;
+
+    public bool killBoss = false;
     public void Start()
     {
         
@@ -89,16 +91,18 @@ public class Boss : MonoBehaviour
     GameObject stone;
     private void Update()
     {
+
         if (bossStage == BossStage.None)
         {
-            if(isover == 1)
+            anim.Play("idle");
+            if (isover == 1)
             {
                 shoot.enabled = false;
 
                 gameObject.GetComponent<Collider2D>().enabled = false;
 
                 // spawn last stone. 
-                if (stoneGenerated == 0)
+                if (stoneGenerated == 0 && transform.childCount < 5)
                 {
                      stone = Instantiate(lastStone, spawnPoint.transform.position, Quaternion.identity);
                      stoneGenerated = 11;
@@ -113,7 +117,7 @@ public class Boss : MonoBehaviour
             else
             {
                 shoot.enabled = false;
-                anim.Play("idle");
+                //anim.Play("idle");
             }
 
         }
@@ -142,15 +146,14 @@ public class Boss : MonoBehaviour
         }
         if(bossStage==BossStage.SecondStage)
         {
-            if(time>0)
+            if (time>0)
                 anim.Play("idle");
 
             if(time<=0f)
             {
                 if (!isInsideCoroutine)
                 {
-                    anim.Play("skeleton_appear");
-
+                    
                     StartCoroutine(Clone());
 
                 }
@@ -158,17 +161,20 @@ public class Boss : MonoBehaviour
             }
 
         }
-        if(bossStage==Boss.BossStage.ThirdStage)
+        if(bossStage== BossStage.ThirdStage)
         {
+            anim.Play("idle");
+
             LookAtPlayer();
             shoot.enabled = true;
            // shoot.speed = 100f;
         }
-        if (bossStage == Boss.BossStage.FourthStage)
+        if (bossStage == BossStage.FourthStage)
         {
             if (time > 0f)
             {
-                LookAtPlayer();
+                anim.Play("idle");
+                
             }
             if (time <= 0f)
             {
@@ -184,7 +190,7 @@ public class Boss : MonoBehaviour
            // shoot.speed = 200f;
         }
 
-        if (bossStage == Boss.BossStage.DeathStage)
+        if (bossStage == BossStage.DeathStage)
         {
             gameObject.GetComponent<Collider2D>().enabled = true;
             //play cutscene...
@@ -204,6 +210,8 @@ public class Boss : MonoBehaviour
     }
      IEnumerator Clone()
     {
+        anim.Play("skeleton_appear");
+
         isInsideCoroutine = true;
 
        yield return new WaitForSeconds(spawnDelay);
@@ -214,17 +222,13 @@ public class Boss : MonoBehaviour
         time = 1f;
 
         isInsideCoroutine = false;
-        //GameObject c2 = Instantiate(clone, transform.position + Offset, Quaternion.identity);
-        //  yield return new WaitForSeconds(2f);
-        //GameObject c3 = Instantiate(clone, transform.position + Offset, Quaternion.identity);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.LogError(654564);
         if(collision.CompareTag("SpecialBullet"))
         {
-            Debug.LogError("gg");
             anim.Play("dead");
         }
     }

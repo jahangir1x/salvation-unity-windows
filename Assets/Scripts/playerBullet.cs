@@ -16,7 +16,7 @@ public class playerBullet : MonoBehaviour
         }
         else if (gameObject.CompareTag("EnemyBullet"))
         {
-            if (collision.CompareTag("Player"))
+            if (collision.CompareTag("Player") || collision.CompareTag("Platform") || collision.CompareTag("PlayerBullet"))
             {
                 Destroy(gameObject);
             }

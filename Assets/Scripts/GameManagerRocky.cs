@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerRocky : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;
 
+    public bool inMainMenu = false;
+    public float spikeDamageInterval = 1f;
+    public float spikeDamageAmount = 20f;
+
     public static GameManagerRocky instance;
     public static Transform PlayerTransform;
     public static Transform PlayerParentTransform;
+    public static PlayerHealth playerHealth;
 
     public static int PlayerLayer;
+    public static int PlatformLayer;
     public static int PlatformShakeAnimID;
     public static int PlatformVanishAnimID;
     public static int PlayerDetectedAnimBoolID;
@@ -36,13 +43,20 @@ public class GameManagerRocky : MonoBehaviour
 
     private void Start()
     {
+        if (!inMainMenu)
+        {
+            TransitionManager.instance.PlayAnimSwitch("transitionclose");
+        }
         if (playerTransform != null)
         {
+
             PlayerTransform = instance.playerTransform;
             PlayerParentTransform = playerTransform.parent;
+            playerHealth = playerTransform.GetComponent<PlayerHealth>();
         }
 
-        PlayerLayer = LayerMask.NameToLayer(Constants.PLAYER_LAYER);
+        PlayerLayer = LayerMask.NameToLayer("Player");
+        PlatformLayer = LayerMask.NameToLayer("Platform");
         PlatformShakeAnimID = Animator.StringToHash(Constants.PLATFORM_SHAKE_ANIM);
         NullAnimID = Animator.StringToHash(Constants.NULL);
         PlatformVanishAnimID = Animator.StringToHash(Constants.PLATFORM_VANISH_ANIM);
@@ -55,6 +69,30 @@ public class GameManagerRocky : MonoBehaviour
         ResetGameConfirmationNoClickTrigger = Animator.StringToHash(Constants.RESET_NO_CLICK_ANIM_TRIGGER);
         QuitGameConfirmationNoClickTrigger = Animator.StringToHash(Constants.QUIT_NO_CLICK_ANIM_TRIGGER);
         CreditsBackClickTrigger = Animator.StringToHash(Constants.CREDITS_BACK_CLICK_ANIM_TRIGGER);
+    }
+
+    public void LoadNextScene()
+    {
+        TransitionManager.instance.PlayAnimSwitch("transition");
+        Invoke("LoadNextSceneRoutine", 1f);
+    }
+
+    private void LoadNextSceneRoutine()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // SceneManager.LoadScene(1);
+    }
+
+    public void RestartScene()
+    {
+        TransitionManager.instance.PlayAnimSwitch("transition");
+        Invoke("LoadCurrentSceneRoutine", 1f);
+    }
+
+    private void LoadCurrentSceneRoutine()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // SceneManager.LoadScene(1);
     }
 
 }

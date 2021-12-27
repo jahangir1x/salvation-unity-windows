@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6887471747477078844}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7277752, y: 0.27819937, z: 14.639844}
+  m_LocalPosition: {x: 0.7277752, y: 0.27819937, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6887471747807305306}
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 32
   m_Sprite: {fileID: 21300000, guid: 33660b16ac8f3c748b8dfa49c145ced3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6887471747807305308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.58, y: -1.14, z: -14.639844}
+  m_LocalPosition: {x: 5.58, y: -1.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6887471747477078843}
@@ -131,10 +131,10 @@ MonoBehaviour:
   checker: {fileID: 6887471749065336350}
   environmentMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   playerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
 --- !u!120 &6887471747807305305
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: db55ebdb9473a4a80a0037f64aafccce, type: 2}
+  - {fileID: 2100000, guid: 300b85cce7933ff48adb74a8f5ecbdb2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -173,10 +173,10 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 158
   m_Positions:
-  - {x: 5.9936132, y: -2.1146326, z: 0}
-  - {x: 4.5165443, y: -1.8497906, z: 0}
+  - {x: 279.68, y: -12.58, z: 0}
+  - {x: 279.68, y: -12.58, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -256,7 +256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6887471749065336351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -0.98, z: 0}
+  m_LocalPosition: {x: -0.02, y: 0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6887471747807305306}

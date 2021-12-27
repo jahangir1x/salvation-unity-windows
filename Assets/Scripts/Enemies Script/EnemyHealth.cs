@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public GameObject blood;
     public Animator anm;
     //public GameObject damageTag, nadeDamageTag;                // bullet damage tag and nade damage tag as a number
     //public Transform tagPosition;                               //position to set active the tag
@@ -16,13 +17,14 @@ public class EnemyHealth : MonoBehaviour
     {
         if (collision.CompareTag("PlayerBullet"))
         {
+            
             Damage();
         }
     }
 
     private void Start()
     {
-        //Debug.Log(transform.GetSiblingIndex());
+
     }
 
     void Damage()
@@ -43,10 +45,10 @@ public class EnemyHealth : MonoBehaviour
     {
         PlayerPrefs.SetInt(transform.GetSiblingIndex().ToString(), 1);
         if(gameObject.CompareTag("CanSwim"))
-            //Destroy(gameObject);
             anm.Play("Enemy2Hurt");
         else
         {
+            Instantiate(blood, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

@@ -68,7 +68,7 @@ public class MeleEnemyAI : MonoBehaviour
                 notPatrolling = false;
             else
                 notPatrolling = true;
-            if (canShoot && rb.velocity.x == 0f)
+            if (canShoot && (rb.velocity.x < 30f || rb.velocity.x > -50f))
             {
                 StartCoroutine(Shoot());                                  // calling for shoot in every timelap ends
             }
@@ -83,15 +83,13 @@ public class MeleEnemyAI : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
 
-        if (playerDistance <= 1.5f)
+
+        if (playerDistance > 1.5f)
         {
-            animatorEnemyGround.SetBool("Idle", true);
+            animatorEnemyGround.Play("Walk");
         }
-        else
-        {
-            animatorEnemyGround.SetBool("Idle", false);
-            animatorEnemyGround.SetBool("Attacking", false);
-        }
+
+        Debug.Log(rb.velocity.x);
     }
     // make player patroll
     void Patrol()
@@ -121,12 +119,11 @@ public class MeleEnemyAI : MonoBehaviour
     {
         //setting it false to prevent shooting continously 
         canShoot = false;
-        //animatorEnemyGround.SetBool("Attacking", false);
+        
         yield return new WaitForSeconds(timeBetweenShoots);
-        animatorEnemyGround.SetBool("Attacking", true);
+        animatorEnemyGround.Play("Attack");
 
         sword.SetActive(true);
-        Invoke("SwordOff", .2f);
         int dir;
         if (transform.position.x > player.position.x)
         {
@@ -136,7 +133,11 @@ public class MeleEnemyAI : MonoBehaviour
         {
             dir = 1;
         }
+        //canShoot = true;
+        yield return new WaitForSeconds(.3f);
+        SwordOff();
         canShoot = true;
+
 
     }
 

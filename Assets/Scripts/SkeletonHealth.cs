@@ -8,12 +8,12 @@ public class SkeletonHealth : MonoBehaviour
     [SerializeField]
     public float skeletonHealth;
 
-    public float skeletonDamage;
+    public float damageValue;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("PlayerBullet"))
-            Damage(skeletonDamage);
+            Damage(damageValue);
     }
 
     public void Damage(float damageAmount)
@@ -36,7 +36,6 @@ public class SkeletonHealth : MonoBehaviour
             //     Random.Range(0, 360));
 
             Destroy(gameObject);
-
         }
 /*        else
             CinemachineShake.Instance.ShakeCamera(shakeIntensity / 2.5f, shakeTime / 2.5f);*/
