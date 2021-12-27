@@ -34,6 +34,7 @@ public class MainMenuManager : MonoBehaviour
     public void ResetGameYesClick()
     {
         Debug.Log("reset game progress");
+        PlayerPrefs.DeleteAll();
     }
 
     public void QuitGameYesClick()

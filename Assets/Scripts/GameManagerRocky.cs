@@ -74,7 +74,7 @@ public class GameManagerRocky : MonoBehaviour
     public void LoadNextScene()
     {
         TransitionManager.instance.PlayAnimSwitch("transition");
-        Invoke("LoadNextSceneRoutine", 0.7f);
+        Invoke("LoadNextSceneRoutine", 1f);
     }
 
     private void LoadNextSceneRoutine()
@@ -86,7 +86,7 @@ public class GameManagerRocky : MonoBehaviour
     public void RestartScene()
     {
         TransitionManager.instance.PlayAnimSwitch("transition");
-        Invoke("LoadCurrentSceneRoutine", 0.7f);
+        Invoke("LoadCurrentSceneRoutine", 1f);
     }
 
     private void LoadCurrentSceneRoutine()
