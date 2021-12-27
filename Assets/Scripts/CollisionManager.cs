@@ -86,7 +86,7 @@ public class CollisionManager : MonoBehaviour
         }
         else if (currentObjectType == ObjectType.CameraBullet)
         {
-            if (collision.gameObject.layer == GameManagerRocky.PlatformLayer || collision.gameObject.layer == GameManager.PlayerLayer)
+            if (collision.gameObject.layer == GameManagerRocky.PlatformLayer || collision.gameObject.layer == GameManagerRocky.PlayerLayer)
             {
                 TriggerEnterCameraBullet();
             }
@@ -183,13 +183,8 @@ public class CollisionManager : MonoBehaviour
 
     private void TriggerEnterHammer()
     {
-        Debug.Log("hammer damage");
         GameManagerRocky.playerHealth.TakeDamage(1000f);
-        // if (hammer.canDealDamage)
-        // {
-        //     //  GameManager.Player_Health.ModifyHealth(-GameManager.HammerObstacleDamage);
-        //     Debug.Log("hammer damage2");
-        // }
+
     }
 
 

@@ -15,13 +15,7 @@ public class PlayerInput : MonoBehaviour
 	[HideInInspector] public bool jumpHeld;			//Bool that stores jump pressed
 	[HideInInspector] public bool jumpPressed;		//Bool that stores jump held
 
-	public GameObject playerDeathVFX;
-	public GameObject coinPickupVFX;
-
 	bool readyToClear;                              //Bool used to keep input in sync
-
-	[SerializeField] float shakeIntensity;
-	[SerializeField] float shakeTime;
 
 	[Header("Shoot")]
 	public Transform FirePos;
@@ -37,32 +31,18 @@ public class PlayerInput : MonoBehaviour
 
 	private void Start()
 	{
-		//GameManager.instance.isGameOver = false;
-		//TransitionManager.instance.PlayANimLoad("transitionclose");
-		//audio_Manager.instance.Play("bg_sound");
 
 		playerMovement = GetComponent<NormalPlayerMovement>();
 	}
 	void Update()
 	{
-/*		//for debug
 		if (Input.GetKeyDown(KeyCode.R))
 			PlayerPrefs.DeleteAll();
-*/
-		//Clear out existing input values
 		ClearInput();
 
-		//if dialouge not complete hold everything
-		//if (PlayerPrefs.GetInt("Dialouge", 0) != 3)
-		//	return;
-
 		//If the Game Manager says the game is over, exit
-		//if (GameManager.IsGameOver())
-		//	return;
-		//If the Game Manager says the it is switch time, exit
-	//	if (GameManager.IsSwitchingScene())
-		//	return;
-
+		if (GameManagerRocky.IsGameOver())
+			return;
 
 		//Process keyboard, mouse, gamepad (etc) inputs
 		if(canMove)
@@ -83,6 +63,9 @@ public class PlayerInput : MonoBehaviour
 	public IEnumerator Fire()
 	{
 		fire = true;
+
+		audio_Manager.instance.Play("bullet");
+		
 		GameObject bullet = Instantiate(Bullet, FirePos.position, Quaternion.identity);
 		Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 		rb.AddForce(Vector2.right * playerMovement.direction * shootSpeed, ForceMode2D.Impulse);
@@ -126,98 +109,4 @@ public class PlayerInput : MonoBehaviour
 
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (collision.tag == "NormalKey")
-		{
-			audio_Manager.instance.Play("key");
-
-			Destroy(collision.transform.parent.gameObject);
-
-			Instantiate(coinPickupVFX, collision.transform.position, Quaternion.identity);
-
-			GameManager.instance.normalKeyCount++;
-
-			GameManager.instance.normalKeyPositions.Add(collision.gameObject.transform.parent.position);
-
-			//UIManager.UpdateNormalKeyUI(14 - GameManager.instance.normalKeyCount);
-
-		}
-
-		if (collision.tag == "FinalKey")
-		{
-			audio_Manager.instance.Play("key");
-
-			Destroy(collision.gameObject);
-
-			Instantiate(coinPickupVFX, collision.transform.position, Quaternion.identity);
-
-			GameManager.instance.FinalKeyCount++;
-
-		//	UIManager.UpdateFinalKeyUI(1 - GameManager.instance.FinalKeyCount);
-
-		}
-
-		if (collision.tag == "Obstacle")
-		{
-			audio_Manager.instance.Play("dead");
-
-			StartCoroutine(HandleDeath());
-
-			CinemachineShake.Instance.ShakeCamera(shakeIntensity, shakeTime);
-		}
-
-		if (collision.tag == "GoToFinalChaoticWorld")
-		{
-		//	TransitionManager.instance.PlayANimLoad("transition");
-
-			Invoke("LoadFinalChaoticScene", 0.7f);
-
-		}
-		/*
-		if (collision.tag == "Level 2 End")
-		{
-
-			Invoke("LoadScene0", 0.7f);
-		}*/
-	}
-
-	IEnumerator HandleDeath()
-	{
-		GameManager.instance.isGameOver = true;
-
-		GameObject playerVFX = Instantiate(playerDeathVFX, transform.position, Quaternion.identity);
-		Destroy(playerVFX, 4f);
-		gameObject.GetComponent<SpriteRenderer>().enabled = false;
-		gameObject.GetComponent<Collider2D>().enabled = false;
-
-		yield return new WaitForSeconds(1.1f);
-
-		//TransitionManager.instance.PlayANimLoad("transition");
-
-		yield return new WaitForSeconds(0.7f);
-		//as this script will only remain on normal level so this will reload normal level only.. 
-		LoadCurrentScene();
-
-		//gameOverPanel.SetActive(true);
-
-		/*totalPointText.text = "Total point: " + point;
-
-		audioSource.PlayOneShot(gameOverClip, 1f);*/
-
-	}
-
-	void LoadFinalChaoticScene()
-	{
-		//load final chaotic world..
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-	}
-
-	void LoadCurrentScene()
-	{
-		//destroy existing game manager..
-		Destroy(GameManager.instance.gameObject);
-
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-	}
 }

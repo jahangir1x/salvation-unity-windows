@@ -36,6 +36,10 @@ public class audio_Manager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Play("bg_sound");
+    }
     public void Play(string name)
     {
         Sounds s = Array.Find(sounds, sound => sound.name == name);
@@ -58,27 +62,5 @@ public class audio_Manager : MonoBehaviour
         s.source.Stop();
     }
 
-    private void Update()
-    {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-            audio_Manager.instance.Stop("MainMenu");
-
-        if (SceneManager.GetActiveScene().buildIndex != 1)
-            audio_Manager.instance.Stop("bg_sound");
-
-        //9-13 chaos music...
-        if (SceneManager.GetActiveScene().buildIndex != 2)
-        {
-            for (int i = 9; i < 14; i++)
-            {
-                sounds[i].source.Stop();
-            }
-        }
-
-        if (SceneManager.GetActiveScene().buildIndex != 3)
-            audio_Manager.instance.Stop("FinalChaos");
-
-
-    }
 
 }

@@ -16,6 +16,7 @@ public class GameManagerRocky : MonoBehaviour
     public static Transform PlayerParentTransform;
     public static PlayerHealth playerHealth;
 
+    public bool isGameOver;                            //Is the game currently over?
     public static int PlayerLayer;
     public static int PlatformLayer;
     public static int PlatformShakeAnimID;
@@ -69,6 +70,16 @@ public class GameManagerRocky : MonoBehaviour
         ResetGameConfirmationNoClickTrigger = Animator.StringToHash(Constants.RESET_NO_CLICK_ANIM_TRIGGER);
         QuitGameConfirmationNoClickTrigger = Animator.StringToHash(Constants.QUIT_NO_CLICK_ANIM_TRIGGER);
         CreditsBackClickTrigger = Animator.StringToHash(Constants.CREDITS_BACK_CLICK_ANIM_TRIGGER);
+    }
+
+    public static bool IsGameOver()
+    {
+        //If there is no current Game Manager, return false
+        if (instance == null)
+            return false;
+
+        //Return the state of the game
+        return instance.isGameOver;
     }
 
     public void LoadNextScene()

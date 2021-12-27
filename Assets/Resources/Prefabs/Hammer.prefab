@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2029940647435290407}
   m_Layer: 0
   m_Name: OuterLayer
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029940647435290404}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 153.5, z: 0}
-  m_LocalScale: {x: 1, y: 10.4, z: 1}
+  m_LocalPosition: {x: 0, y: 149.68, z: 0}
+  m_LocalScale: {x: 1, y: 10.647389, z: 1}
   m_Children: []
   m_Father: {fileID: 2029940648884984033}
   m_RootOrder: 1
@@ -121,9 +121,11 @@ GameObject:
   - component: {fileID: 2029940647728835570}
   - component: {fileID: 2029940647728835571}
   - component: {fileID: 1809002034861285032}
+  - component: {fileID: 1406183780}
+  - component: {fileID: 1406183779}
   m_Layer: 0
   m_Name: smasher
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -219,7 +221,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,6 +246,87 @@ PolygonCollider2D:
       - {x: 8.483355, y: -1.7867107}
       - {x: 14.362746, y: -2.683672}
       - {x: 14.370421, y: -10.242947}
+--- !u!50 &1406183780
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029940647728835575}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!66 &1406183779
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029940647728835575}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1809002034861285032}
+    m_ColliderPaths:
+    - - X: 32578426
+        Y: -32041176
+      - X: -32365410
+        Y: -31773828
+      - X: -37120760
+        Y: -25959914
+      - X: -36960772
+        Y: -7568474
+      - X: -21577380
+        Y: -5016998
+      - X: -15779583
+        Y: 5740515
+      - X: -15307158
+        Y: 22417840
+      - X: 15307854
+        Y: 22334842
+      - X: 15905474
+        Y: 5888057
+      - X: 21980304
+        Y: -4629353
+      - X: 37213760
+        Y: -6953373
+      - X: 37233648
+        Y: -26539394
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 3.2578304, y: -3.2041175}
+      - {x: 3.7233648, y: -2.65393}
+      - {x: 3.721352, y: -0.6953337}
+      - {x: 2.198024, y: -0.4629243}
+      - {x: 1.5905473, y: 0.5888117}
+      - {x: 1.5307575, y: 2.2334843}
+      - {x: -1.5307167, y: 2.2417557}
+      - {x: -1.5779612, y: 0.5740462}
+      - {x: -2.1577508, y: -0.501702}
+      - {x: -3.6960773, y: -0.7568712}
+      - {x: -3.7120705, y: -2.5959988}
+      - {x: -3.2365286, y: -3.177383}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
 --- !u!1 &2029940648884984032
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +339,7 @@ GameObject:
   - component: {fileID: 2029940648884984035}
   m_Layer: 0
   m_Name: Hammer
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,10 +374,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canDealDamage: 0
   hammerSmasherTransform: {fileID: 2029940647728835568}
-  positionToMove: {x: 0, y: -2.64, z: 0}
+  positionToMove: {x: 0, y: -6.9, z: 0}
   totalDurationToSmash: 1
   waitBeforeFirstSmash: 0
-  waitAfterSmash: 1
+  waitAfterSmash: 2
   waitAfterPull: 1
   isMovingToSmashPosition: 1
 --- !u!1 &2029940649318233135
@@ -311,7 +394,7 @@ GameObject:
   - component: {fileID: 7027388194781731995}
   m_Layer: 0
   m_Name: handle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -417,7 +500,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -433,5 +516,7 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -5.883943, y: -8.557184}
+      - {x: -5.3192, y: -5.989854}
+      - {x: 5.2638707, y: -6.007402}
       - {x: 6.020735, y: -8.560095}
       - {x: -0.05871087, y: -9.820586}
