@@ -65,7 +65,7 @@ public class CollisionManager : MonoBehaviour
             TriggerEnterWheelSwitch();
         }
 
-        else if (collision.gameObject.layer == GameManager.PlayerLayer)
+        else if (collision.gameObject.layer == GameManagerRocky.PlayerLayer)
         {
             switch (currentObjectType)
             {
@@ -96,13 +96,13 @@ public class CollisionManager : MonoBehaviour
 
     private void TriggerEnterWheelSwitch()
     {
-        wheelSwitchAnimator.SetBool(GameManager.IsDoorSwitchOnAnimBool, true);
+        wheelSwitchAnimator.SetBool(GameManagerRocky.IsDoorSwitchOnAnimBool, true);
         wheelSwitch.StartRotation();
     }
 
     private void TriggerEnterDoorSwitch()
     {
-        doorSwitchAnimator.SetBool(GameManager.IsDoorSwitchOnAnimBool, true);
+        doorSwitchAnimator.SetBool(GameManagerRocky.IsDoorSwitchOnAnimBool, true);
         doorSwitch.OpenTheGate();
 
     }
@@ -114,7 +114,7 @@ public class CollisionManager : MonoBehaviour
             TriggerExitDoorSwitch();
         }
 
-        if (collision.gameObject.layer == GameManager.PlayerLayer)
+        if (collision.gameObject.layer == GameManagerRocky.PlayerLayer)
         {
             switch (currentObjectType)
             {
@@ -129,7 +129,7 @@ public class CollisionManager : MonoBehaviour
 
     private void TriggerExitDoorSwitch()
     {
-        doorSwitchAnimator.SetBool(GameManager.IsDoorSwitchOnAnimBool, false);
+        doorSwitchAnimator.SetBool(GameManagerRocky.IsDoorSwitchOnAnimBool, false);
         doorSwitch.CloseTheGate();
     }
 
@@ -144,12 +144,12 @@ public class CollisionManager : MonoBehaviour
 
     private void TriggerExitMovingPlatform()
     {
-        GameManager.PlayerTransform.SetParent(GameManager.PlayerParentTransform);
+        GameManagerRocky.PlayerTransform.SetParent(GameManagerRocky.PlayerParentTransform);
     }
 
     private void TriggerEnterMovingPlatform()
     {
-        GameManager.PlayerTransform.SetParent(transform);   // change parent to move the player with the platform.
+        GameManagerRocky.PlayerTransform.SetParent(transform);   // change parent to move the player with the platform.
     }
 
 }

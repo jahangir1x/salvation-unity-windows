@@ -66,7 +66,7 @@ public class FieldOfView : MonoBehaviour
             }
             else
             {
-                if (raycastHit2D.transform.gameObject.layer == GameManager.PlayerLayer)
+                if (raycastHit2D.transform.gameObject.layer == GameManagerRocky.PlayerLayer)
                 {
 
                     foundPlayer = true;

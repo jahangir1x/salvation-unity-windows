@@ -37,14 +37,14 @@ public class CameraObstacle : MonoBehaviour
         fieldOfView.SetAimDirection((rayOrigin.right * (-1)));
         if (fieldOfView.foundPlayer)
         {
-            cameraAnimator.SetBool(GameManager.PlayerDetectedAnimBoolID, true);
+            cameraAnimator.SetBool(GameManagerRocky.PlayerDetectedAnimBoolID, true);
 
             ChasePlayer();
             ShootThePlayer();
         }
         else
         {
-            cameraAnimator.SetBool(GameManager.PlayerDetectedAnimBoolID, false);
+            cameraAnimator.SetBool(GameManagerRocky.PlayerDetectedAnimBoolID, false);
             RotateCamera();
         }
     }
@@ -83,7 +83,7 @@ public class CameraObstacle : MonoBehaviour
 
     private void ChasePlayer()
     {
-        var direction = GameManager.PlayerTransform.position - rayOrigin.transform.position;
+        var direction = GameManagerRocky.PlayerTransform.position - rayOrigin.transform.position;
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 180f;
 
         if (angle > 10f && angle < 170f)
@@ -102,7 +102,7 @@ public class CameraObstacle : MonoBehaviour
 
         if (!shootingAngleSet)
         {
-            var dir = GameManager.PlayerTransform.position - gun.transform.position;
+            var dir = GameManagerRocky.PlayerTransform.position - gun.transform.position;
             shootingAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 180f + UnityEngine.Random.Range(-shootOffset, shootOffset);
             Debug.Log("shooting angle: " + shootingAngle);
             shootingAngleSet = true;

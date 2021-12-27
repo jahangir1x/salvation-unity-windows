@@ -13,13 +13,13 @@ public class DoorSwitch : MonoBehaviour
     public DoorType currentDoorType;
     public void OpenTheGate()
     {
-        doorAnimator.SetBool(GameManager.IsDoorOpenAnimBool, true);
+        doorAnimator.SetBool(GameManagerRocky.IsDoorOpenAnimBool, true);
     }
     public void CloseTheGate()
     {
         if (currentDoorType == DoorType.FastResponsive)
         {
-            doorAnimator.SetBool(GameManager.IsDoorOpenAnimBool, false);
+            doorAnimator.SetBool(GameManagerRocky.IsDoorOpenAnimBool, false);
         }
         else
         {
@@ -30,7 +30,7 @@ public class DoorSwitch : MonoBehaviour
     IEnumerator OpenDoorSlowly()
     {
         yield return new WaitForSeconds(2.5f);
-        doorAnimator.SetBool(GameManager.IsDoorOpenAnimBool, false);
+        doorAnimator.SetBool(GameManagerRocky.IsDoorOpenAnimBool, false);
 
     }
 
