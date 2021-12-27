@@ -22,8 +22,25 @@ public class CollisionManager : MonoBehaviour
     private DoorSwitch doorSwitch;
     private WheelSwitch wheelSwitch;
     private CameraBullet cameraBullet;
+    private float timeElapsedSinceSpikeDamage;
+    private bool playerExitedSpike = true;
 
-
+    private void Update()
+    {
+        if (currentObjectType == ObjectType.SpikeArea)
+        {
+            if ((timeElapsedSinceSpikeDamage > GameManagerRocky.instance.spikeDamageInterval) && (playerExitedSpike == false))
+            {
+                timeElapsedSinceSpikeDamage = 0;
+                GameManagerRocky.playerHealth.TakeDamage(GameManagerRocky.instance.spikeDamageAmount);
+            }
+            timeElapsedSinceSpikeDamage += Time.deltaTime;
+            if (timeElapsedSinceSpikeDamage > 10000f)
+            {
+                timeElapsedSinceSpikeDamage = 1000f;
+            }
+        }
+    }
 
     private void Start()
     {
@@ -64,6 +81,13 @@ public class CollisionManager : MonoBehaviour
         {
             TriggerEnterWheelSwitch();
         }
+        else if (currentObjectType == ObjectType.CameraBullet)
+        {
+            if (collision.gameObject.layer == GameManagerRocky.PlatformLayer || collision.gameObject.layer == GameManager.PlayerLayer)
+            {
+                TriggerEnterCameraBullet();
+            }
+        }
 
         else if (collision.gameObject.layer == GameManagerRocky.PlayerLayer)
         {
@@ -75,8 +99,11 @@ public class CollisionManager : MonoBehaviour
                 case ObjectType.SpikeArea:
                     TriggerEnterSpikeArea();
                     break;
-                case ObjectType.CameraBullet:
-                    TriggerEnterCameraBullet();
+                // case ObjectType.CameraBullet:
+                //     TriggerEnterCameraBullet();
+                //     break;
+                case ObjectType.Hammer:
+                    TriggerEnterHammer();
                     break;
                 default:
                     break;
@@ -86,12 +113,14 @@ public class CollisionManager : MonoBehaviour
 
     private void TriggerEnterCameraBullet()
     {
-        Debug.Log("<insert player damage due to camera bullet code here >");
+        // Debug.Log("<insert player damage due to camera bullet code here >");
+        Destroy(gameObject);
     }
 
     private void TriggerEnterSpikeArea()
     {
-        Debug.Log("<insert player damage code here>");
+        playerExitedSpike = false;
+        // Debug.Log("<insert player damage code here>");
     }
 
     private void TriggerEnterWheelSwitch()
@@ -121,10 +150,18 @@ public class CollisionManager : MonoBehaviour
                 case ObjectType.MovingPlatform:
                     TriggerExitMovingPlatform();
                     break;
+                case ObjectType.SpikeArea:
+                    TriggerExitSpikeArea();
+                    break;
                 default:
                     break;
             }
         }
+    }
+
+    private void TriggerExitSpikeArea()
+    {
+        playerExitedSpike = true;
     }
 
     private void TriggerExitDoorSwitch()
@@ -133,13 +170,16 @@ public class CollisionManager : MonoBehaviour
         doorSwitch.CloseTheGate();
     }
 
-    // private void TriggerEnterHammer()
-    // {
-    //     if (hammer.canDealDamage)
-    //     {
-    //          GameManager.Player_Health.ModifyHealth(-GameManager.HammerObstacleDamage);
-    //     }
-    // }
+    private void TriggerEnterHammer()
+    {
+        Debug.Log("hammer damage");
+        GameManagerRocky.playerHealth.TakeDamage(1000f);
+        // if (hammer.canDealDamage)
+        // {
+        //     //  GameManager.Player_Health.ModifyHealth(-GameManager.HammerObstacleDamage);
+        //     Debug.Log("hammer damage2");
+        // }
+    }
 
 
     private void TriggerExitMovingPlatform()

@@ -104,7 +104,7 @@ public class CameraObstacle : MonoBehaviour
         {
             var dir = GameManagerRocky.PlayerTransform.position - gun.transform.position;
             shootingAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 180f + UnityEngine.Random.Range(-shootOffset, shootOffset);
-            Debug.Log("shooting angle: " + shootingAngle);
+            // Debug.Log("shooting angle: " + shootingAngle);
             shootingAngleSet = true;
         }
         else

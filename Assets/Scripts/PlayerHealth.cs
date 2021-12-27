@@ -56,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
         if (collision.CompareTag("EnemyBullet"))
         {
             TakeDamage(20f); // enemy missile.. 
-            
+
         }
 
     }
@@ -89,15 +89,15 @@ public class PlayerHealth : MonoBehaviour
         {
             playerOn = false;
 
-           // idle.GetComponent<SpriteRenderer>().enabled = false;
-          //  idle.GetComponent<Animator>().enabled = false;
+            // idle.GetComponent<SpriteRenderer>().enabled = false;
+            //  idle.GetComponent<Animator>().enabled = false;
 
             //gameObject.GetComponent<BoxCollider2D>().enabled = false;
             col.enabled = false;
 
             StartCoroutine(HandleDeath());
 
-           // audio_Manager.instance.Play("dead");
+            // audio_Manager.instance.Play("dead");
 
             CinemachineShake.Instance.ShakeCamera(50, 0.2f);
         }
@@ -109,11 +109,11 @@ public class PlayerHealth : MonoBehaviour
 
         //GameObject playerVFX = Instantiate(deathVFX, transform.position, Quaternion.identity);
 
-       // Destroy(playerVFX, 4f);
+        // Destroy(playerVFX, 4f);
 
-       // yield return new WaitForSeconds(1.1f);
+        // yield return new WaitForSeconds(1.1f);
 
-     //   TransitionManager.instance.PlayANimLoad("transition");
+        //   TransitionManager.instance.PlayANimLoad("transition");
 
 
         yield return new WaitForSeconds(0.7f);
@@ -162,8 +162,8 @@ public class PlayerHealth : MonoBehaviour
 
         touchedBoss = Physics2D.OverlapCircle(transform.position, 1f, BossMask, Mathf.Infinity * -1, Mathf.Infinity);
 
-        if ((touchedEnemy1 || touchedEnemy2 || touchedEnemy3 || touchedEnemy4 || touchedEnemy5 || 
-            touchedEnemy6 || touchedEnemy7 || touchedBoss)  && availableDamage)
+        if ((touchedEnemy1 || touchedEnemy2 || touchedEnemy3 || touchedEnemy4 || touchedEnemy5 ||
+            touchedEnemy6 || touchedEnemy7 || touchedBoss) && availableDamage)
         {
             if (touchedEnemy1)
             {
@@ -197,9 +197,9 @@ public class PlayerHealth : MonoBehaviour
             {
                 StartCoroutine(TakeDamg(80f));
             }
-            
+
         }
-        
+
     }
 
     IEnumerator TakeDamg(float damage)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+
 public class MainMenuManager : MonoBehaviour
 {
     public AudioMixer audioMixer;
@@ -18,12 +19,17 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         audio_Manager.instance.Play("MainMenu");
+        // TransitionManager.instance.PlayANimLoad("transition");
     }
 
     public void StartClick()
     {
+        GameManagerRocky.instance.LoadNextScene();
+
         Debug.Log("start game");
     }
+
+
 
     public void ResetGameYesClick()
     {
@@ -55,12 +61,16 @@ public class MainMenuManager : MonoBehaviour
 
     public void ResetGameClick()
     {
+        Debug.Log("reset game");
         mainMenuCanvasAnimator.SetTrigger(GameManagerRocky.ResetGameClickTrigger);
     }
 
     public void CreditsBackClick()
     {
-        mainMenuCanvasAnimator.SetTrigger(GameManagerRocky.CreditsBackClickTrigger);
+        Debug.Log("back credits");
+        // mainMenuCanvasAnimator.SetTrigger(GameManagerRocky.CreditsBackClickTrigger);
+        mainMenuCanvasAnimator.SetTrigger("Credits back click");
+
     }
 
     public void ResetGameConfirmationNoClick()
