@@ -19,8 +19,11 @@ public class GroundEnemyAI : MonoBehaviour {
     public GameObject bullet;
     public EnemyHealth enemyHealthAccess;
 
+    public float bulletSpeed;
 
-    float walkSpeed = 100f , range = 30f , playerDistance ;
+
+    public float walkSpeed = 100f;
+    float range = 30f , playerDistance ;
     float timeBetweenShoots = .7f;
     float foodRadius = .4f;
     bool turn1;
@@ -112,7 +115,7 @@ public class GroundEnemyAI : MonoBehaviour {
         bulletScale.x *= dir;
         firedBullet.transform.localScale = bulletScale;
 
-        firedBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(bulletScale.x * 1000f, 0f));
+        firedBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(bulletScale.x * bulletSpeed, 0f));
         canShoot = true;
 
     }

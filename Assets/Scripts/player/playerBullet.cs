@@ -8,7 +8,7 @@ public class playerBullet : MonoBehaviour
     {
         if (gameObject.CompareTag("PlayerBullet"))
         {
-            if (collision.CompareTag("Boss") || collision.CompareTag("Enemy") || collision.CompareTag("Platform") || collision.CompareTag("EnemyBullet"))
+            if (collision.CompareTag("Boss") || collision.CompareTag("Enemy") || collision.CompareTag("Platform") || collision.CompareTag("BossBullet"))
             {
                 Destroy(gameObject);
             }

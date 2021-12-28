@@ -20,6 +20,7 @@ TagManager:
   - Stone4
   - SpecialBullet
   - FxTemporaire
+  - BossBullet
   layers:
   - Default
   - TransparentFX

@@ -163,6 +163,8 @@ MonoBehaviour:
   animatorEnemyGround: {fileID: 4957780786325481784}
   bullet: {fileID: 852720767671111944, guid: 90534420ef8dd5e40b292ba346668f08, type: 3}
   enemyHealthAccess: {fileID: 4957780786325481795}
+  bulletSpeed: 500
+  walkSpeed: 300
 --- !u!50 &4957780786325481788
 Rigidbody2D:
   serializedVersion: 4

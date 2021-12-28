@@ -21,7 +21,8 @@ public class MeleEnemyAI : MonoBehaviour
     public EnemyHealth enemyHealthAccess;
 
     Animator animatorEnemyGround;
-    float walkSpeed = 100f, range = 15f, playerDistance;
+    public float walkSpeed = 100f;
+    float range = 15f, playerDistance;
     float timeBetweenShoots = 1f;
     float foodRadius = .4f;
     public bool turn1;

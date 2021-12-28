@@ -326,7 +326,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3780800240275332813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3231808fc9ffa04d89fcf69c5901f43, type: 3}
+  m_Script: {fileID: 11500000, guid: 51356182773209b41a032f402063407e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   notPatrolling: 0
@@ -343,6 +343,7 @@ MonoBehaviour:
   isActivated: 0
   sword: {fileID: 1259962172660180760}
   enemyHealthAccess: {fileID: 3780800240275332789}
+  walkSpeed: 250
   turn1: 0
 --- !u!1 &4093679122500013448
 GameObject:
