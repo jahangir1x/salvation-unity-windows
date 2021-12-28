@@ -43,6 +43,7 @@ public class EnemyHealth : MonoBehaviour
     // to destroy enemy
     void Dead()
     {
+        UIManager.uiUpdater();
         PlayerPrefs.SetInt(transform.GetSiblingIndex().ToString(), 1);
         if(gameObject.CompareTag("CanSwim"))
             anm.Play("Enemy2Hurt");

@@ -13,6 +13,7 @@ public class SaveSystem : MonoBehaviour
 
             PlayerPrefs.SetFloat("X", collision.transform.position.x);
             PlayerPrefs.SetFloat("Y", collision.transform.position.y);
+            PlayerPrefs.SetInt("Score", UIManager.getScore());
 
             //play anim
             if (!isSaved)

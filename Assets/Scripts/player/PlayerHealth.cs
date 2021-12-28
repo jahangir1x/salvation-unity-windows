@@ -58,6 +58,11 @@ public class PlayerHealth : MonoBehaviour
             
         }
 
+        if (collision.CompareTag("Boss"))
+        {
+            TakeDamage(5f);
+        }
+
     }
 
     private void Start()

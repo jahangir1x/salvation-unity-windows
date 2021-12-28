@@ -12,6 +12,7 @@ public class Boss : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     public GameObject clone;
+    public GameObject skeletonSpawnVFX;
     public Vector3 Offset;
     BossHealth bossHealth;
     Shoot shoot;
@@ -25,7 +26,7 @@ public class Boss : MonoBehaviour
 
     bool isAttacking = false;
 
-    public GameObject spawnPoint;
+    public GameObject[] spawnPoints;
     public enum BossStage
     {
         None,
@@ -33,7 +34,8 @@ public class Boss : MonoBehaviour
         SecondStage,
         ThirdStage,
         FourthStage,
-        DeathStage
+        DeathStage,
+        Void
 
     }
      public BossStage bossStage;
@@ -102,10 +104,14 @@ public class Boss : MonoBehaviour
                 gameObject.GetComponent<Collider2D>().enabled = false;
 
                 // spawn last stone. 
-                if (stoneGenerated == 0 && transform.childCount < 5)
+                if (stoneGenerated == 0 && transform.childCount < 6)
                 {
-                     stone = Instantiate(lastStone, spawnPoint.transform.position, Quaternion.identity);
-                     stoneGenerated = 11;
+                    for (int i = 0; i < spawnPoints.Length-1; i++)
+                    {
+                        stone = Instantiate(lastStone, spawnPoints[i].transform.position, Quaternion.identity);
+                        stoneGenerated = 11;
+                    }
+                     
 
                 }
 
@@ -207,17 +213,25 @@ public class Boss : MonoBehaviour
             bossCutsceneManager.PlayFinalCutscene();
         }
         time -= Time.deltaTime;
+
+        if (bossStage == BossStage.Void)
+        {
+            //do nothing..
+        }
     }
      IEnumerator Clone()
     {
         anim.Play("skeleton_appear");
 
+
         isInsideCoroutine = true;
 
        yield return new WaitForSeconds(spawnDelay);
        
-        GameObject c1= Instantiate(clone, spawnPoint.transform.position, Quaternion.identity,transform);
+        GameObject c1= Instantiate(clone, spawnPoints[4].transform.position, Quaternion.identity,transform);
+        GameObject vfx= Instantiate(skeletonSpawnVFX, spawnPoints[4].transform.position, Quaternion.identity,transform);
 
+        Destroy(vfx, 4f);
         //c1.tag = "Skeleton";
         time = 1f;
 
@@ -230,7 +244,18 @@ public class Boss : MonoBehaviour
         if(collision.CompareTag("SpecialBullet"))
         {
             anim.Play("dead");
+
+            audio_Manager.instance.Play("boss destroy");
+
+            bossStage = BossStage.Void;
+
+            Invoke("EndGame", 3f);
         }
+    }
+
+    void EndGame()
+    {
+        bossCutsceneManager.EndTheGame();
     }
 
 

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5949159433268090338}
   - component: {fileID: 5949159433268090339}
   - component: {fileID: -4278870334496611091}
+  - component: {fileID: 632340980}
+  - component: {fileID: 632340981}
   m_Layer: 0
   m_Name: Stone 4
   m_TagString: Stone4
@@ -113,6 +115,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stoneVFX: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
+--- !u!50 &632340980
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5949159433268090336}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 2
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &632340981
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5949159433268090336}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.62}
+  serializedVersion: 2
+  m_Radius: 0.44
 --- !u!1 &7354967774160672196
 GameObject:
   m_ObjectHideFlags: 0

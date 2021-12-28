@@ -9,19 +9,20 @@ public class stoneCollector : MonoBehaviour
       if(other.gameObject.tag == "Player"){
 
             Instantiate(stoneVFX, transform.position, Quaternion.identity);
-
+            audio_Manager.instance.Play("key");
           if (this.gameObject.CompareTag("Stone1")){
             PlayerPrefs.SetInt("Stone1",1);
-                Debug.LogError(PlayerPrefs.GetInt("Stone1"));
-                Debug.LogError("huhi");
+                UIManager.instance.UpdateStoneUI();
                 Destroy(gameObject);
             }
           if(this.gameObject.CompareTag("Stone2")){
             PlayerPrefs.SetInt("Stone2",1);
+                UIManager.instance.UpdateStoneUI();
                 Destroy(gameObject);
             }
           if(this.gameObject.CompareTag("Stone3")){
             PlayerPrefs.SetInt("Stone3",1);
+                UIManager.instance.UpdateStoneUI();
                 Destroy(gameObject);
             }
           if(this.gameObject.CompareTag("Stone4")){

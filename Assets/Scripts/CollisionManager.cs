@@ -121,6 +121,7 @@ public class CollisionManager : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("X");
         PlayerPrefs.DeleteKey("Y");
+        PlayerPrefs.SetInt("Score", UIManager.getScore());
 
         GameManagerRocky.instance.LoadNextScene();
     }

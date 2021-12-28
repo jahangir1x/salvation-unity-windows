@@ -196,4 +196,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonHealth: 100
-  damageValue: 15
+  damageValue: 22

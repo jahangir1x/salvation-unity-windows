@@ -92,7 +92,8 @@ public class BossHealth : MonoBehaviour
             boss.bossStage = Boss.BossStage.FourthStage;
         }
 
-        if(bossHealth <= 0f  && boss.bossStage != Boss.BossStage.DeathStage)
+        if(bossHealth <= 0f  && boss.bossStage != Boss.BossStage.DeathStage && 
+            boss.bossStage != Boss.BossStage.Void)
         {
             boss.isover = 1;
 

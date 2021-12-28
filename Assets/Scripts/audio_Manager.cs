@@ -37,8 +37,10 @@ public class audio_Manager : MonoBehaviour
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex > 1)
+        if(SceneManager.GetActiveScene().buildIndex > 1 && SceneManager.GetActiveScene().buildIndex < 6)
             Play("bg_sound");
+        else if (SceneManager.GetActiveScene().buildIndex == 6)
+            Play("boss");
     }
     public void Play(string name)
     {

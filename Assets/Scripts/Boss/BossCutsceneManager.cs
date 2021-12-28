@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossCutsceneManager : MonoBehaviour
 {
@@ -19,10 +20,14 @@ public class BossCutsceneManager : MonoBehaviour
 
     private void Start()
     {
-        player.canMove = false;
-        boss.enabled = false;
+        if(PlayerPrefs.GetInt("HasCutsceneSeen", 0) == 0) // has not seen yet..
+        {
+            player.canMove = false;
+            boss.enabled = false;
 
-        Invoke("playAnim", 1f);
+            Invoke("playAnim", 1f);
+        }
+
 
     }
 
@@ -36,6 +41,8 @@ public class BossCutsceneManager : MonoBehaviour
 
         player.canMove = true;
         boss.enabled = true;
+
+        PlayerPrefs.SetInt("HasCutsceneSeen", 1);
     }
     public void PlayCutscene1Devil_1()
     {
@@ -54,7 +61,9 @@ public class BossCutsceneManager : MonoBehaviour
     {
         // do stuffs here..
         player.canMove = false;
+        //audio_Manager.instance.Stop("boss");
         animator.Play("BossCutscene2");
+
 
     }
 
@@ -70,6 +79,16 @@ public class BossCutsceneManager : MonoBehaviour
         player.Bullet = specialBullet;
         StartCoroutine(player.Fire());
 
+    }
+
+    public void EndTheGame()
+    {
+        animator.Play("EndGame");
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }

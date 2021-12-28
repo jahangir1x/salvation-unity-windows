@@ -189,11 +189,19 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: boss destroy
-    clip: {fileID: 8300000, guid: 25d8a6b3073dcbf40b0133fdbfeb55ce, type: 3}
+    clip: {fileID: 8300000, guid: ab6df12e99bcb254e89757936dbfb408, type: 3}
     masterMixtureGroup: {fileID: 24300002, guid: 03c548c1db7bd79488271b532a555f20,
       type: 2}
     volume: 0.3
     pinch: 0.9
     loop: 0
+    source: {fileID: 0}
+  - name: boss
+    clip: {fileID: 8300000, guid: 353e5641e07552244b9fe3eefcaee1e9, type: 3}
+    masterMixtureGroup: {fileID: 24300002, guid: 71d042d32d01dc441bc0a7f3912e5de2,
+      type: 2}
+    volume: 0.3
+    pinch: 0.9
+    loop: 1
     source: {fileID: 0}
   gameOverClip: {fileID: 8300000, guid: 0c367dc9255088b4db5f4404706a3e3d, type: 3}
