@@ -24,6 +24,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartClick()
     {
+        PlayerPrefs.DeleteAll();
         GameManagerRocky.instance.LoadNextScene();
 
     }
