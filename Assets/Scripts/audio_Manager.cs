@@ -22,7 +22,6 @@ public class audio_Manager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
 
         foreach(Sounds s in sounds)
         {
@@ -38,7 +37,8 @@ public class audio_Manager : MonoBehaviour
 
     private void Start()
     {
-        Play("bg_sound");
+        if(SceneManager.GetActiveScene().buildIndex > 1)
+            Play("bg_sound");
     }
     public void Play(string name)
     {

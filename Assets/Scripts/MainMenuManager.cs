@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 
 public class MainMenuManager : MonoBehaviour
@@ -9,7 +10,7 @@ public class MainMenuManager : MonoBehaviour
     public AudioMixer audioMixer;
     public AudioMixer SFX_Mixture;
     [SerializeField] private Animator mainMenuCanvasAnimator;
-    [SerializeField] private UnityEngine.UI.Slider masterVolumeSlider;
+    [SerializeField] private Slider masterVolumeSlider;
 
     private void ButtonPressed()
     {
@@ -19,35 +20,30 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         audio_Manager.instance.Play("MainMenu");
-        // TransitionManager.instance.PlayANimLoad("transition");
     }
 
     public void StartClick()
     {
         GameManagerRocky.instance.LoadNextScene();
 
-        Debug.Log("start game");
     }
 
 
 
     public void ResetGameYesClick()
     {
-        Debug.Log("reset game progress");
         PlayerPrefs.DeleteAll();
     }
 
     public void QuitGameYesClick()
     {
-        Debug.Log("quit game");
         Application.Quit();
     }
 
     public void VolumeSave()
     {
         audioMixer.SetFloat("volume", Mathf.Log10(masterVolumeSlider.value) * 20f);
-        audioMixer.SetFloat("sfxVolume", Mathf.Log10(masterVolumeSlider.value) * 20f);
-        Debug.Log("volume: " + masterVolumeSlider.value);
+        SFX_Mixture.SetFloat("sfxVolume", Mathf.Log10(masterVolumeSlider.value) * 20f);
     }
 
     public void QuitClick()
@@ -62,14 +58,12 @@ public class MainMenuManager : MonoBehaviour
 
     public void ResetGameClick()
     {
-        Debug.Log("reset game");
         mainMenuCanvasAnimator.SetTrigger(GameManagerRocky.ResetGameClickTrigger);
     }
 
     public void CreditsBackClick()
     {
-        Debug.Log("back credits");
-        // mainMenuCanvasAnimator.SetTrigger(GameManagerRocky.CreditsBackClickTrigger);
+
         mainMenuCanvasAnimator.SetTrigger("Credits back click");
 
     }

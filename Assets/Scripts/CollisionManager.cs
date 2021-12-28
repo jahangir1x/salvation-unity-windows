@@ -119,6 +119,9 @@ public class CollisionManager : MonoBehaviour
 
     private void TriggerEnterEndingObject()
     {
+        PlayerPrefs.DeleteKey("X");
+        PlayerPrefs.DeleteKey("Y");
+
         GameManagerRocky.instance.LoadNextScene();
     }
 

@@ -96,8 +96,10 @@ MonoBehaviour:
   foundPlayer: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 769
+    m_Bits: 768
   origin: {x: 0, y: 0, z: 0}
+  fieldOfView: 40
+  viewDistance: 70
 --- !u!1 &149704051302477297
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,10 +453,10 @@ MonoBehaviour:
   rayOrigin: {fileID: 149704051656949483}
   fieldOfView: {fileID: 149704051239555256}
   cameraAngularSpeed: 0.7
-  cameraIntruderChaseSpeed: 3
-  bulletSpeed: 7
+  cameraIntruderChaseSpeed: 7
+  bulletSpeed: 25
   shootOffset: 10
-  gunRotationSpeed: 0
+  gunRotationSpeed: 7
 --- !u!1 &149704052706099347
 GameObject:
   m_ObjectHideFlags: 0

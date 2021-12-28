@@ -127,7 +127,7 @@ public class CameraObstacle : MonoBehaviour
                                                        * bulletSpeed, ForceMode2D.Impulse);
 
             timeElapsedSinceLastShooting = 0f;
-            shootInterval = UnityEngine.Random.Range(0.2f, 3f);
+            shootInterval = UnityEngine.Random.Range(0.2f, 2f);
         }
 
 
