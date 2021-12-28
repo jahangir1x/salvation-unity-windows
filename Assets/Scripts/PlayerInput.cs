@@ -36,8 +36,8 @@ public class PlayerInput : MonoBehaviour
 	}
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.R))
-			PlayerPrefs.DeleteAll();
+/*		if (Input.GetKeyDown(KeyCode.R))
+			PlayerPrefs.DeleteAll();*/
 		ClearInput();
 
 		//If the Game Manager says the game is over, exit
