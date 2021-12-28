@@ -13,7 +13,7 @@ public class playerBullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (gameObject.CompareTag("EnemyBullet"))
+        else if (gameObject.CompareTag("BossBullet"))
         {
             if (collision.CompareTag("Player") || collision.CompareTag("Platform") || collision.CompareTag("PlayerBullet"))
             {

@@ -15,11 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Door 1.unity
     guid: 0c8c8850d6df3e64199566499f9550d8
   - enabled: 1
-    path: Assets/Scenes/Door 2 _Rocky copied.unity
-    guid: d23b396cedf370444a892f4e5c5bcffd
+    path: Assets/Scenes/Door 2.unity
+    guid: 1e257a42ad9855a4582dea7950fd10d3
   - enabled: 1
-    path: Assets/Scenes/Door 3 _Rocky copied.unity
-    guid: f2f1b267e2a26d14e86b9158b610a4aa
+    path: Assets/Scenes/Door 3.unity
+    guid: d84cba482c9e65649ae9505799080dc8
   - enabled: 1
     path: Assets/Scenes/Door 4.unity
     guid: 38ff5ee2b84589345849549e8c4302f2

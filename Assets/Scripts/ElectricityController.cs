@@ -17,7 +17,7 @@ public class ElectricityController : MonoBehaviour
         StartCoroutine(Toggle());
     }
 
-
+    
 
     IEnumerator Toggle()
     {
